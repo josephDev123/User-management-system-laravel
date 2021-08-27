@@ -1,35 +1,56 @@
 <!DOCTYPE html>
 @extends('layout.main')
 @section('title', 'Welcome page')
-  @section('content')        
+  @section('content')   
+
+
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#"><i style='color:gray' class="fa fa-envelope fa-lg"></i></a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="#"><i style='color:gray' class="fa fa-bell"></i></a>
+      </li>   
+      <div class="dropdown dropstart" style=margin-right:'10px'>
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="/images.png" width="40" height="30" class="rounded-circle img-fluid"/>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+      </div>
+
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
         <a class="nav-link px-3" href="#">Sign out</a>
       </div>
     </div>
   </header>
-  
+
+  {{-- navbar section --}}
   <div class="container-fluid">
     <div class="row">
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-light sidebar collapse">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse" style="color:white">
         <div class="position-sticky pt-3">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
+              <a class="nav-link active" aria-current="page" href="{{ url('/') }}">
                 <span data-feather="home"></span>
                 Dashboard
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{ url('registerUserForm') }}">
                 <span data-feather="file"></span>
-                Orders
+                Add Users
               </a>
             </li>
             <li class="nav-item">
@@ -92,7 +113,9 @@
           </ul>
         </div>
       </nav>
-  
+        {{-- end navbar section --}}
+
+   {{-- start main section --}}
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 class="h2">Dashboard</h1>
@@ -108,7 +131,51 @@
           </div>
         </div>
   
-        <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+        {{-- dashboard card --}}
+        <div class="row">
+            <div class="col-md-4 col-xl-3">
+              <div class="card bg-c-blue order-card">
+                  <div class="card-block">
+                      <h6 class="m-b-20">Orders Received</h6>
+                      <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>486</span></h2>
+                      <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+              <div class="card bg-c-green order-card">
+                  <div class="card-block">
+                      <h6 class="m-b-20">Orders Received</h6>
+                      <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span>486</span></h2>
+                      <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+              <div class="card bg-c-yellow order-card">
+                  <div class="card-block">
+                      <h6 class="m-b-20">Orders Received</h6>
+                      <h2 class="text-right"><i class="fa fa-refresh f-left"></i><span>486</span></h2>
+                      <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+              <div class="card bg-c-pink order-card">
+                  <div class="card-block">
+                      <h6 class="m-b-20">Orders Received</h6>
+                      <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span>486</span></h2>
+                      <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                  </div>
+              </div>
+            </div>
+      </div>
+
+
+  {{-- end dashboard card --}}
   
         <h2>Section title</h2>
         <div class="table-responsive">
@@ -239,6 +306,11 @@
           </table>
         </div>
       </main>
+
+       {{-- end main section --}}
+
+
+
     </div>
   </div>
 
