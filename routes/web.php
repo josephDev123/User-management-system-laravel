@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('registerUserForm', function () {
-    return view('registerUser');
+Route::get('profile', function () {
+    return view('profile');
 });
+
+Route::get('signup', [RegisterUserController::class, 'create']);
