@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +13,12 @@ use App\Http\Controllers\RegisterUserController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('dashboard');
+// });
+
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('profile', function () {
-    return view('profile');
-});
-
-Route::get('signup', [RegisterUserController::class, 'create']);
+require __DIR__.'/auth.php';

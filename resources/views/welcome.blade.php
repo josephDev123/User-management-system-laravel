@@ -30,7 +30,17 @@
 
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="#">Sign out</a>
+        {{-- <a class="nav-link px-3" href="{{ route('logout') }}">Sign out</a> --}}
+
+        <form method="POST" action="{{ route('logout') }}">
+          @csrf
+
+          <x-responsive-nav-link :href="route('logout')"
+                  onclick="event.preventDefault();
+                              this.closest('form').submit();">
+              {{ __('Log Out') }}
+          </x-responsive-nav-link>
+      </form>
       </div>
     </div>
   </header>
@@ -56,19 +66,19 @@
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="shopping-cart"></span>
-                Products
+                User
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="users"></span>
-                Customers
+                Create users
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="bar-chart-2"></span>
-                Reports
+                Role
               </a>
             </li>
             <li class="nav-item">
@@ -79,7 +89,7 @@
             </li>
           </ul>
   
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          {{-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>Saved reports</span>
             <a class="link-secondary" href="#" aria-label="Add a new report">
               <span data-feather="plus-circle"></span>
@@ -110,7 +120,7 @@
                 Year-end sale
               </a>
             </li>
-          </ul>
+          </ul> --}}
         </div>
       </nav>
         {{-- end navbar section --}}

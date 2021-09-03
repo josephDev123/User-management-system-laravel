@@ -16,9 +16,9 @@ class Auth
      */
     public function handle(Request $request, Closure $next)
     {
-        if(){
-            return return redirect('/');
-        }
-        return $next($request);
+        // if(){
+        //     return return redirect('/');
+        // }
+        // return $next($request);
     }
 }
