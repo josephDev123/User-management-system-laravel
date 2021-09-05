@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 @extends('layout.main')
 @section('title', 'Welcome page')
-  @section('content')   
+  @section('content');
+  
+  @foreach ($users as $user)
+      
+  @endforeach
 
 {{-- header --}}
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -36,11 +40,12 @@
         <form method="POST" action="{{ route('logout') }}" >
           @csrf
 
-          <x-responsive-nav-link :href="route('logout')"
+         <button class="btn btn-danger btn-sm"> <x-responsive-nav-link :href="route('logout')"
                   onclick="event.preventDefault();
                               this.closest('form').submit();" style="color:white; margin-right:10px">
               {{ __('Log Out') }}
           </x-responsive-nav-link>
+        </button>
       </form>
       </div>
     </div>
@@ -148,15 +153,15 @@
           </div>
         </div>
 
-  
+        
         {{-- dashboard card --}}
         <div class="row">
             <div class="col-md-4 col-xl-3">
               <div class="card bg-c-blue order-card">
                   <div class="card-block">
                       <h6 class="m-b-20">Number of users</h6>
-                      <h2 class="text-right"><i class="fa fa-users f-right"></i><span>486</span></h2>
-                      <p class="m-b-0">Registered users<span class="f-right">351</span></p>
+                      <h2 class="text-right"><i class="fa fa-users f-right"></i><span>{{ $users->count() }}</span></h2>
+                      <p class="m-b-0">Registered users<span class="f-right">{{ $users->count() }}</span></p>
                   </div>
               </div>
             </div>
@@ -205,12 +210,18 @@
 
   {{-- end dashboard card --}}
   
-        <h2>Section title</h2>
+        <h2>Analytics</h2>
         <canvas id="myChart" width="400" height="400"></canvas>
       </main>
 
        {{-- end main section --}}
 
+
+       {{-- passing the users all to js to get the length of register users --}}
+<script type="text/javascript">
+    window.data = {!! json_encode($users) !!}
+
+</script>
 
 
     </div>

@@ -1,11 +1,21 @@
+// get the number of register users
+let data = window.data.length;
+console.log(data);
+
+var month= ["January","February","March","April","May","June","July", "August","September","October","November","December"];
+var d = new Date();
+var monthName=month[d.getMonth()]; 
+
+
+
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: month,
         datasets: [{
             label: 'no of registered users',
-            data: [12, 19, 3, 5, 2, 3],
+            data: [0,0,0,0,0,0,0,0,data,0,0,0],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
