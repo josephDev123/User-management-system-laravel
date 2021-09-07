@@ -1,12 +1,18 @@
 <!DOCTYPE html>
+<?php
+use Illuminate\Support\Facades\Auth;
+
+if (Auth::check()) {
+ $auth = $auth++;
+}
+?>
+
+
 @extends('layout.main')
 @section('title', 'Welcome page')
   @section('content');
-  
-  @foreach ($users as $user)
-      
-  @endforeach
 
+ 
 {{-- header --}}
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">Joe Dev</a>
@@ -66,7 +72,9 @@
                 <span data-feather="home"></span>
                 Dashboard
               </a>
+              
             </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="{{ url('profile') }}">
                 <span data-feather="file"></span>
@@ -140,9 +148,10 @@
    {{-- start main section --}}
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Dashboard</h1>
+          <h1 class="h2">Dashboard</h1> 
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
+              <button class="btn btn-success"> Welcome {{ Auth::user()->name }}</button>
               <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
               <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
             </div>
@@ -153,7 +162,7 @@
           </div>
         </div>
 
-        
+        {{-- @foreach ($users as $user) Welcome {{ $user->name }} --}}
         {{-- dashboard card --}}
         <div class="row">
             <div class="col-md-4 col-xl-3">
@@ -181,7 +190,7 @@
                   <div class="card-block">
                       <h6 class="m-b-20">Users online</h6>
                       <h2 class="text-right"><i class="fa fa-signal f-right"></i><span>486</span></h2>
-                      <p class="m-b-0">Currently Online<span class="f-right">351</span></p>
+                      <p class="m-b-0">Currently Online<span class="f-right"> {{ $auth }}</span></p>
                   </div>
               </div>
             </div>

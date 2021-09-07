@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
@@ -20,7 +20,8 @@ use App\Models\User;
 
 Route::get('/', function () {
     $user = User::all();
-    return view('welcome', ['users' => $user]);
-})->middleware(['auth'])->name('dashboard');
+    $auth_user = Auth::check();
+    return view('welcome', ['users' => $user, 'auth'=>$auth_user]);
+})->middleware(['auth'])->name('index');
 
 require __DIR__.'/auth.php';

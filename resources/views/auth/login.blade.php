@@ -2,9 +2,11 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+               
+                <img src="images/login_image.jpg" alt="login_img" srcset="">
             </a>
-        </x-slot>
+       
+        </x-slot> 
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
