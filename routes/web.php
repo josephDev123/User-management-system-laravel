@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\profileController;
 use App\Models\User;
 
 /*
@@ -23,5 +24,7 @@ Route::get('/', function () {
     $auth_user = Auth::check();
     return view('welcome', ['users' => $user, 'auth'=>$auth_user]);
 })->middleware(['auth'])->name('index');
+
+Route::get('/profile', [profileController::class, 'create'])->middleware(['auth']);
 
 require __DIR__.'/auth.php';

@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 
 if (Auth::check()) {
- $auth = $auth++;
+  // $auth =0;
+  // $auth++;
 }
 ?>
 
@@ -76,7 +77,7 @@ if (Auth::check()) {
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('profile') }}">
+              <a class="nav-link" href="{{ url('/profile') }}">
                 <span data-feather="file"></span>
                 Profile
               </a>
@@ -190,7 +191,7 @@ if (Auth::check()) {
                   <div class="card-block">
                       <h6 class="m-b-20">Users online</h6>
                       <h2 class="text-right"><i class="fa fa-signal f-right"></i><span>486</span></h2>
-                      <p class="m-b-0">Currently Online<span class="f-right"> {{ $auth }}</span></p>
+                      <p class="m-b-0">Currently Online<span class="f-right"> </span></p>
                   </div>
               </div>
             </div>

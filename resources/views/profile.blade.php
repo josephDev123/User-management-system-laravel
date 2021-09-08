@@ -1,5 +1,5 @@
 @extends('layout.main');
-@section('title', 'Register page');
+@section('title', 'Profile page');
 @section('content');
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">Joe Dev</a>
@@ -131,27 +131,58 @@
           </div>
         </div>
 
+       <div class="row">
+         <div class="col-sm-4">
+            <img src="images/man-avatar.jpg" alt="" class="img-responsive" width="120" height="120">
+<br><br>
+      <h4>Profile</h4>
+      <h6 style="background: rgb(223, 220, 220); font-weight:normal; padding: 4px"><i class="fa fa-user"></i> {{ Auth::user()->name }} </h6>
+      <h6 style="background: rgb(223, 220, 220); font-weight:normal; padding: 4px"><i class="fa fa-calendar-alt"></i> {{ Auth::user()->created_at }} </h6>
+            <form method="POST" action="profile.php">
+              @csrf
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" aria-describedby="title">
+              </div>
 
+              <div class="mb-3">
+                <label for="git_account" class="form-label">Git account</label>
+                <input type="text" class="form-control" id="git_account" aria-describedby="title">
+              </div>
 
+              <div class="mb-3">
+                <label for="link" class="form-label">LinkedIn account</label>
+                <input type="text" class="form-control" id="link" aria-describedby="title">
+              </div>
 
-        <h2>Register User</h2>
-        <form>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
-            </div>
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-       
+              <div class="mb-3">
+                <label for="file" class="form-label">profile image</label>
+                <input type="file" class="form-control" id="file" aria-describedby="file">
+              </div>
+              <div class="mb-3">
+                <label for="profile_detail" class="form-label">Personal Detail</label>
+                <textarea class="form-control" id="profile_detail"></textarea>
+              </div>
+             
+              <button type="submit" class="btn btn-primary">Submit profile</button>
+            </form>
+
+            {{-- edit profile --}}
+            <form method="POST" action="profile.php">
+              @csrf
+              @method('put');
+              <button type="submit" class="btn btn-primary">Update your profile</button>
+            </form>
+         </div>
+
+         <div class="col-sm-8">
+         <h3><i class="fa fa-info-circle"></i> Personal details</h3>
+          
+         
+
+        </div>
+
+       </div>
       </main>
 
        {{-- end main section --}}
