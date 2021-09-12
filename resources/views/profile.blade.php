@@ -118,7 +118,7 @@
    {{-- start main section --}}
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Dashboard</h1>
+          <h1 class="h2">Profile</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
               <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -135,7 +135,7 @@
          <div class="col-sm-4">
             <img src="images/man-avatar.jpg" alt="" class="img-responsive" width="120" height="120">
 <br><br>
-      <h4>Profile</h4>
+      
       <h6 style="background: rgb(223, 220, 220); font-weight:normal; padding: 4px"><i class="fa fa-user"></i> {{ Auth::user()->name }} </h6>
       <h6 style="background: rgb(223, 220, 220); font-weight:normal; padding: 4px"><i class="fa fa-calendar-alt"></i> {{ Auth::user()->created_at }} </h6>
             <form method="POST" action="profile.php">
