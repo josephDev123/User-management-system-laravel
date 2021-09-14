@@ -15,11 +15,11 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table-> user_id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('photo_url');
             $table->string('title');
-            $table->string('github_account');
-            $table->timestamp('linkedin_account')->nullable();
-            $table->string('profile_image');
+            $table->string('github_account')->nullable();
+            $table->string('linkedin_account');
             $table->string('personal_detail');
             $table->timestamps();
         });
