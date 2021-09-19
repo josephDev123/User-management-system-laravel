@@ -1,3 +1,9 @@
+<?php 
+// use App\Models\Profiles; 
+// use App\Models\User; 
+// $profile = new Profiles;
+?>
+
 @extends('layout.main');
 @section('title', 'Profile page');
 @section('content');
@@ -133,9 +139,19 @@
 
        <div class="row">
          <div class="col-sm-4">
+        
             <img src="images/man-avatar.jpg" alt="" class="img-responsive" width="120" height="120">
 <br><br>
-      
+
+@if ($profileData)
+  @foreach ( $profileData as $item)
+  {{ $item->title }}
+  <br> <br>
+  {{ $item->personal_detail }}
+  <br> <br>
+  @endforeach
+@endif
+    
       <h6 style="background: rgb(223, 220, 220); font-weight:normal; padding: 4px"><i class="fa fa-user"></i> {{ Auth::user()->name }} </h6>
       <h6 style="background: rgb(223, 220, 220); font-weight:normal; padding: 4px"><i class="fa fa-calendar-alt"></i> {{ Auth::user()->created_at }} </h6>
 <br>
@@ -149,7 +165,7 @@
                     </ul>
                 </div>
             @endif
-            <form method="POST" action="{{ route('profile') }}">
+            <form method="POST" action="{{ route('profile') }}" enctype="multipart/form-data">
               @csrf
               <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -192,18 +208,28 @@
 
          <div class="col-sm-7">
          <h3><i class="fa fa-info-circle"></i> Personal details</h3>
+
+         @if ($profileData)
+             <div class="alert alert-info">
+                  No Details. Update/submit your profile
+             </div>
+            
+             @else
+             
           <div style="background: rgb(235, 233, 233); padding:5px; display:flex; justify-content:space-between; font-size:15px">
-            <span><i class="fab fa-github"></i></span> <span>github.com</span>
+            <span><i class="fab fa-github"></i></span> <span> @foreach ( $profileData as $item){{ $item->github_account }} @endforeach</span>
           </div>
           <br>
 
           <div style="background: rgb(235, 233, 233); padding:5px; display:flex; justify-content:space-between; font-size:15px">
-            <span><i class="fab fa-linkedin"></i></span> <span>Linkedin.com</span>
+            <span><i class="fab fa-linkedin"></i></span> <span>@foreach ( $profileData as $item){{ $item->linkedin_account }} @endforeach</span>
           </div>
 <br>
           <div style="background: rgb(235, 233, 233); padding:5px; display:flex; justify-content:space-between; font-size:15px">
-            <span><i class="fas fa-phone-alt"></i></span> <span>08130197306</span>
+            <span><i class="fas fa-phone-alt"></i></span> <span>@foreach ( $profileData as $item){{ $item->contact }} @endforeach</span>
           </div>
+         @endif
+
          
 
         </div>

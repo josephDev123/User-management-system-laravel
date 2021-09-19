@@ -16,12 +16,12 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');;
-            $table->binary('photo_url');
-            $table->string('title', 100);
-            $table->string('github_account');
-            $table->string('linkedin_account');
-            $table->string('contact', 20);
-            $table->string('personal_detail', 200);
+            $table->string('photo_url')->nullable();
+            $table->string('title', 100)->nullable();
+            $table->string('github_account')->nullable();
+            $table->string('linkedin_account')->nullable();
+            $table->string('contact', 20)->nullable();
+            $table->string('personal_detail', 200)->nullable();
             $table->timestamps();
         });
     }
