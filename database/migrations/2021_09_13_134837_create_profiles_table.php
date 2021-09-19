@@ -20,6 +20,7 @@ class CreateProfilesTable extends Migration
             $table->string('title', 100);
             $table->string('github_account');
             $table->string('linkedin_account');
+            $table->string('contact', 20);
             $table->string('personal_detail', 200);
             $table->timestamps();
         });
