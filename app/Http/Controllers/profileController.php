@@ -53,6 +53,25 @@ class profileController extends Controller
     }
 
     public function update(Request $request){
-        
+        $profile = new Profiles;
+        $validated = $request->validate([
+            'title'=>[ 'required','max:100'],
+            // 'git_account'=>['required'],
+            // 'linkedin_account'=>['required'],
+            'phone_contact'=>['required', 'max:20'],
+            // 'img_file' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'profile_detail'=>['required', 'max:200']
+        ]);
+
+        $profile::where('user_id', '=', Auth::id() )->update([
+            'photo_url' =>$request->img_file,
+            'title'=>$request->title,
+            'github_account'=>$request->git_account,
+            'linkedin_account'=>$request->linkedin_account,
+            'contact'=>$request->phone_contact,
+            'personal_detail'=>$request->profile_detail,
+        ]);
+
+        return redirect()->back();
     }
 }
