@@ -51,4 +51,8 @@ class profileController extends Controller
         return redirect()->back();
        
     }
+
+    public function update(Request $request){
+        
+    }
 }

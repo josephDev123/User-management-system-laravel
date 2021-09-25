@@ -138,19 +138,24 @@
         </div>
 
        <div class="row">
+
          <div class="col-sm-4">
-        
-            <img src="images/man-avatar.jpg" alt="" class="img-responsive" width="120" height="120">
+          {{-- @foreach ($profileData  as $item)
+          {{ $item->photo_url }}
+             <img src="{{ asset($item->photo_url) }}" alt="" class="img-responsive" width="120" height="120"> 
+          @endforeach  --}}
+          <img src="images/man-avatar.jpg" alt="" class="img-responsive" width="120" height="120">
+         {{-- public/image/php9D09_1632571653.png --}}
 <br><br>
 
-@if ($profileData)
-  @foreach ( $profileData as $item)
-  {{ $item->title }}
-  <br> <br>
-  {{ $item->personal_detail }}
-  <br> <br>
-  @endforeach
-@endif
+      @if ($profileData)
+        @foreach ( $profileData as $item)
+        <h4>{{ $item->title }}</h4>
+        <br>
+        {{ $item->personal_detail }}
+        <br> <br>
+        @endforeach
+      @endif
     
       <h6 style="background: rgb(223, 220, 220); font-weight:normal; padding: 4px"><i class="fa fa-user"></i> {{ Auth::user()->name }} </h6>
       <h6 style="background: rgb(223, 220, 220); font-weight:normal; padding: 4px"><i class="fa fa-calendar-alt"></i> {{ Auth::user()->created_at }} </h6>
@@ -165,6 +170,8 @@
                     </ul>
                 </div>
             @endif
+
+            @if (!$profileData)
             <form method="POST" action="{{ route('profile') }}" enctype="multipart/form-data">
               @csrf
               <div class="mb-3">
@@ -199,17 +206,52 @@
               <button type="submit" class="btn btn-primary">Submit profile</button>
             </form>
 
+            @else
             {{-- edit profile --}}
-            {{-- <form method="POST" action="profile.php">
+            <form method="POST" action="{{ route('profile') }}" enctype="multipart/form-data">
               @csrf
-              <button type="submit" class="btn btn-primary">Update your profile</button>
-            </form> --}}
+              @method('PATCH')
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" aria-describedby="title">
+              </div>
+
+              <div class="mb-3">
+                <label for="git_account" class="form-label">Git account</label>
+                <input type="text" class="form-control" id="git_account" name="git_account" aria-describedby="title">
+              </div>
+
+              <div class="mb-3">
+                <label for="linkedin_account" class="form-label">LinkedIn account</label>
+                <input type="text" class="form-control" id="linkedin_account" name="linkedin_account" aria-describedby="title">
+              </div>
+
+              <div class="mb-3">
+                <label for="phone_contact" class="form-label">Phone contact</label>
+                <input type="text" class="form-control" id="phone_contact" name="phone_contact" aria-describedby="title">
+              </div>
+
+              <div class="mb-3">
+                <label for="img_file" class="form-label">profile image</label>
+                <input type="file" class="form-control" id="img_file" name="img_file" aria-describedby="file">
+              </div>
+              <div class="mb-3">
+                <label for="profile_detail" class="form-label">Personal Detail</label>
+                <textarea class="form-control" id="profile_detail" name="profile_detail"></textarea>
+              </div>
+             
+              <button type="submit" class="btn btn-primary">Update profile</button>
+            </form>
+            @endif
+         
+           
+            
          </div>
 
          <div class="col-sm-7">
          <h3><i class="fa fa-info-circle"></i> Personal details</h3>
 
-         @if ($profileData)
+         @if (!$profileData)
              <div class="alert alert-info">
                   No Details. Update/submit your profile
              </div>

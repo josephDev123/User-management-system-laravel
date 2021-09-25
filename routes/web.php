@@ -27,5 +27,6 @@ Route::get('/', function () {
 
 Route::get('/profile', [profileController::class, 'create'])->middleware(['auth']);
 Route::post('/profile', [profileController::class, 'store'])->middleware(['auth'])->name('profile');
+Route::patch('/profile',  [profileController::class, 'update']);
 
 require __DIR__.'/auth.php';
