@@ -56,15 +56,19 @@ class profileController extends Controller
         $profile = new Profiles;
         $validated = $request->validate([
             'title'=>[ 'required','max:100'],
-            // 'git_account'=>['required'],
-            // 'linkedin_account'=>['required'],
+            'git_account'=>['required'],
+            'linkedin_account'=>['required'],
             'phone_contact'=>['required', 'max:20'],
-            // 'img_file' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'img_file' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'profile_detail'=>['required', 'max:200']
         ]);
+        
+        $file = $request->file('img_file');
+        $file->move(base_path('\public\profile_images'), $file->getClientOriginalName());
+
 
         $profile::where('user_id', '=', Auth::id() )->update([
-            'photo_url' =>$request->img_file,
+            'photo_url' =>$request->img_file->getClientOriginalName(),
             'title'=>$request->title,
             'github_account'=>$request->git_account,
             'linkedin_account'=>$request->linkedin_account,

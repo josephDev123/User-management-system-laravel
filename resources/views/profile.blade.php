@@ -22,7 +22,16 @@
       </li>   
       <div class="dropdown dropstart" style=margin-right:'10px'>
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="/images.png" width="40" height="30" class="rounded-circle img-fluid"/>
+        @foreach ($profileData  as $item)
+
+        @if ( $item->photo_url)
+          <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="40" height="30">
+        @else
+        <img src="/images.png" width="40" height="30" class="rounded-circle img-fluid"/>
+        @endif
+
+    @endforeach 
+     
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li><a class="dropdown-item" href="#">Action</a></li>
@@ -31,11 +40,24 @@
       </ul>
       </div>
 
-    <div class="navbar-nav">
-      <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="#">Sign out</a>
+      <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+          {{-- <a class="nav-link px-3" href="{{ route('logout') }}">Sign out</a> --}}
+  
+          <form method="POST" action="{{ route('logout') }}" >
+            @csrf
+  
+           <button class="btn btn-danger btn-sm" style="margin-left:7px; margin-top:5px;" <x-responsive-nav-link :href="route('logout')"
+                    onclick="event.preventDefault();
+                                this.closest('form').submit();" style="color:white;">
+                {{ __('Log Out') }}
+            </x-responsive-nav-link>
+          </button>
+        </form>
+        </div>
       </div>
-    </div>
+
+
   </header>
 
   {{-- navbar section --}}
@@ -68,18 +90,6 @@
                 Customers
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="bar-chart-2"></span>
-                Reports
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="layers"></span>
-                Integrations
-              </a>
-            </li>
           </ul>
   
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -93,24 +103,6 @@
               <a class="nav-link" href="#">
                 <span data-feather="file-text"></span>
                 Current month
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Last quarter
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Social engagement
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Year-end sale
               </a>
             </li>
           </ul>
@@ -140,12 +132,16 @@
        <div class="row">
 
          <div class="col-sm-4">
-          {{-- @foreach ($profileData  as $item)
-          {{ $item->photo_url }}
-             <img src="{{ asset($item->photo_url) }}" alt="" class="img-responsive" width="120" height="120"> 
-          @endforeach  --}}
-          <img src="images/man-avatar.jpg" alt="" class="img-responsive" width="120" height="120">
-         {{-- public/image/php9D09_1632571653.png --}}
+          @foreach ($profileData  as $item)
+
+              @if ( $item->photo_url)
+                <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="120" height="120">
+              @else
+                <img src="images/man-avatar.jpg" alt="" class="img-responsive" width="120" height="120">
+              @endif
+
+          @endforeach 
+      
 <br><br>
 
       @if ($profileData)

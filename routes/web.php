@@ -2,7 +2,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\profileController;
-use App\Models\User;
+use App\Http\Controllers\WelcomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,16 +16,10 @@ use App\Models\User;
 |
 */
 
-// Route::get('/', function () {
-//     return view('dashboard');
-// });
+//route for welcome
+Route::get('/', [WelcomeController::class, 'create'])->middleware(['auth'])->name('index');
 
-Route::get('/', function () {
-    $user = User::all();
-    $auth_user = Auth::check();
-    return view('welcome', ['users' => $user, 'auth'=>$auth_user]);
-})->middleware(['auth'])->name('index');
-
+//route for profile
 Route::get('/profile', [profileController::class, 'create'])->middleware(['auth']);
 Route::post('/profile', [profileController::class, 'store'])->middleware(['auth'])->name('profile');
 Route::patch('/profile',  [profileController::class, 'update']);
