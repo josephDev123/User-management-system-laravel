@@ -25,7 +25,7 @@
         @foreach ($profileData  as $item)
 
         @if ( $item->photo_url)
-          <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="40" height="30">
+          <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="30" height="30">
         @else
         <img src="/images.png" width="40" height="30" class="rounded-circle img-fluid"/>
         @endif

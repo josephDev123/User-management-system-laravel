@@ -29,12 +29,12 @@ if (Auth::check()) {
       <a class="nav-link" href="#"><i style='color:gray' class="fa fa-bell"></i></a>
       </li>   
       <div class="dropdown dropstart" style=margin-right:'10px'>
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 
             @foreach ($profileData  as $item)
 
             @if ( $item->photo_url)
-              <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="40" height="30">
+              <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="30" height="30">
             @else
             <img src="/images.png" width="40" height="30" class="rounded-circle img-fluid"/>
             @endif
@@ -200,12 +200,12 @@ if (Auth::check()) {
               <div class="card bg-c-yellow order-card">
                   <div class="card-block">
                       <h6 class="m-b-20">Users online</h6>
-                      <h2 class="text-right"><i class="fa fa-signal f-right"></i><span>486</span></h2>
-                      <p class="m-b-0">Currently Online<span class="f-right"> </span></p>
+                      <h2 class="text-right"><i class="fa fa-signal f-right"></i><span>{{ $ip_address }}</span></h2>
+                      <p class="m-b-0">Currently Online<span class="f-right"> {{ $ip_address }}</span></p>
                   </div>
               </div>
             </div>
-
+            
             <div class="col-md-4 col-xl-3">
               <div class="card bg-c-pink order-card">
                   <div class="card-block">
