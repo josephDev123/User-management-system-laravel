@@ -93,21 +93,21 @@ if (Auth::check()) {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/users_details">
                 <span data-feather="shopping-cart"></span>
-                User
+                Users
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="users"></span>
-                Create users
+                Message
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="bar-chart-2"></span>
-                Role
+                Notification
               </a>
             </li>
             <li class="nav-item">

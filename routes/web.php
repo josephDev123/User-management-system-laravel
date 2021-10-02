@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\UserDetailController;
 
 
 /*
@@ -23,5 +24,8 @@ Route::get('/', [WelcomeController::class, 'create'])->middleware(['auth'])->nam
 Route::get('/profile', [profileController::class, 'create'])->middleware(['auth']);
 Route::post('/profile', [profileController::class, 'store'])->middleware(['auth'])->name('profile');
 Route::patch('/profile',  [profileController::class, 'update']);
+
+//user details route
+Route::get('users_details', [UserDetailController::class, 'create']);
 
 require __DIR__.'/auth.php';
