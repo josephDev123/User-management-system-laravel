@@ -135,8 +135,85 @@
           </div>
         </div>
 
+        {{-- // information table --}}
        <div class="row">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Title</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Photo</th>
+              <th scope="col">Personal Detail</th>
+              <th scope="col">Contact</th>
+              <th scope="col">Github Account</th>
+              <th scope="col">LinkedIn Account</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Otto</td>
+          
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Otto</td>
+            </tr>
 
+            <tr>
+              <th scope="row">2</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Otto</td>
+            </tr>
+
+            <tr>
+              <th scope="row">2</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Otto</td>
+            </tr>
+
+            <tr>
+              <th scope="row">2</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Otto</td>
+            </tr>
+            
+          </tbody>
+        </table>
         
 
        </div>

@@ -28,4 +28,10 @@ Route::patch('/profile',  [profileController::class, 'update']);
 //user details route
 Route::get('users_details', [UserDetailController::class, 'create']);
 
+
+
+//fallback route
+Route::fallback(function(){
+    return 'the page you are aspiring to view does not exist';
+});
 require __DIR__.'/auth.php';
