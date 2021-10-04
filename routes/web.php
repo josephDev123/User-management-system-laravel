@@ -26,7 +26,7 @@ Route::post('/profile', [profileController::class, 'store'])->middleware(['auth'
 Route::patch('/profile',  [profileController::class, 'update']);
 
 //user details route
-Route::get('users_details', [UserDetailController::class, 'create']);
+Route::get('users_details', [UserDetailController::class, 'create'])->middleware(['auth']);
 
 
 

@@ -137,84 +137,40 @@
 
         {{-- // information table --}}
        <div class="row">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">id</th>
-              <th scope="col">Title</th>
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Photo</th>
-              <th scope="col">Personal Detail</th>
-              <th scope="col">Contact</th>
-              <th scope="col">Github Account</th>
-              <th scope="col">LinkedIn Account</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Mark</td>
-              <td>Otto</td>
-          
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Mark</td>
-              <td>Otto</td>
-            </tr>
+        <div class="table-responsive">
+            <table class="table table-striped caption-top">
+              <caption>List of users</caption>
+              <thead>
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Photo</th>
+                  <th scope="col">Personal Detail</th>
+                  <th scope="col">Contact</th>
+                  <th scope="col">Github Account</th>
+                  <th scope="col">LinkedIn Account</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($userProfile_detail as $item)
+                  <tr> 
+                      <th scope="row">{{ $item->id }}</th>
+                      <td>{{ $item->title }}</td>
+                      <td>{{ $item->name }}</td>
+                      <td>{{ $item->email }}</td>
+                      <td><img src="{{asset('profile_images/'.$item->photo_url) }}" width="70" height="70" /></td>
+                      <td>{{ $item->personal_detail }}</td>
+                      <td>{{ $item->contact }}</td>
+                      <td>{{ $item->github_account }}</td>
+                      <td>{{ $item->linkedin_account }}</td>  
+                  </tr>
+                @endforeach
 
-            <tr>
-              <th scope="row">2</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Mark</td>
-              <td>Otto</td>
-            </tr>
-
-            <tr>
-              <th scope="row">2</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Mark</td>
-              <td>Otto</td>
-            </tr>
-
-            <tr>
-              <th scope="row">2</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Mark</td>
-              <td>Otto</td>
-            </tr>
-            
-          </tbody>
-        </table>
-        
+              </tbody>
+            </table>
+        </div>
 
        </div>
       </main>

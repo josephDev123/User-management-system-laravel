@@ -144,6 +144,7 @@
                 <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="120" height="120">
               @else
                 <img src="images/man-avatar.jpg" alt="" class="img-responsive" width="120" height="120">
+                <h2>No Profile image yet</h2>
               @endif
 
           @endforeach 

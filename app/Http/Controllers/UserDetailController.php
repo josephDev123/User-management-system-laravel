@@ -12,6 +12,7 @@ class UserDetailController extends Controller
     $user = new User();
     $profile = new Profiles;
     $profileData = $profile->where('user_id', '=', Auth::id())->get();
-       return view('usersDetails',  ['profileData'=>$profileData, 'allUser'=>$user->all(), 'allProfile'=>$profile->all() ]);
+    $allUserProfile = $user->join('profiles', 'users.id', '=', 'profiles.user_id' )->get(['users.*', 'profiles.photo_url', 'profiles.photo_url', 'profiles.title', 'profiles.github_account', 'profiles.linkedin_account', 'profiles.contact', 'profiles.personal_detail']);
+       return view('usersDetails',  ['profileData'=>$profileData, 'userProfile_detail'=>$allUserProfile]);
    }
 }
