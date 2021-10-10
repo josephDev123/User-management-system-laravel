@@ -11,7 +11,7 @@ class profileController extends Controller
 {
     public function create(){
         $user = new User();
-        $profile = new Profiles;
+        $profile = new Profiles();
         $profileData = $profile->where('user_id', '=', Auth::id())->get();
         return view('profile', ['profileData'=>$profileData]);
     }

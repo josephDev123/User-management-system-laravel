@@ -138,16 +138,15 @@
        <div class="row">
 
          <div class="col-sm-4">
-          @foreach ($profileData  as $item)
-
-              @if ( $item->photo_url)
+          <h6>if no Profile image. Upload</h6> 
+         @foreach($profileData as $item) 
+             @if($item)
                 <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="120" height="120">
-              @else
-                <img src="images/man-avatar.jpg" alt="" class="img-responsive" width="120" height="120">
-                <h2>No Profile image yet</h2>
-              @endif
-
-          @endforeach 
+                @else
+                {{-- <h6>if no Profile image. Upload</h6>  --}}
+               
+            @endif  
+           @endforeach  
       
 <br><br>
 
@@ -174,7 +173,7 @@
                 </div>
             @endif
 
-            @if (!$profileData)
+            @if ($profileData=='')
             <form method="POST" action="{{ route('profile') }}" enctype="multipart/form-data">
               @csrf
               <div class="mb-3">

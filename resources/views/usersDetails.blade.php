@@ -140,6 +140,7 @@
         <div class="table-responsive">
             <table class="table table-striped caption-top">
               <caption>List of users</caption>
+              <caption> <p class="alert alert-danger">Note: Only users with completed profile will be display</p></caption>
               <thead>
                 <tr>
                   <th scope="col">id</th>
