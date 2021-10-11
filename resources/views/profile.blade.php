@@ -138,16 +138,12 @@
        <div class="row">
 
          <div class="col-sm-4">
-          <h6>if no Profile image. Upload</h6> 
-         @foreach($profileData as $item) 
+            <h6 class='alert alert-danger'>If no Profile image. Upload</h6> 
+          @foreach($profileData as $item) 
              @if($item)
                 <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="120" height="120">
-                @else
-                {{-- <h6>if no Profile image. Upload</h6>  --}}
-               
-            @endif  
-           @endforeach  
-      
+             @endif  
+            @endforeach
 <br><br>
 
       @if ($profileData)
@@ -173,7 +169,7 @@
                 </div>
             @endif
 
-            @if ($profileData=='')
+            @if (!$profileData->count())
             <form method="POST" action="{{ route('profile') }}" enctype="multipart/form-data">
               @csrf
               <div class="mb-3">
@@ -263,25 +259,25 @@
          <div class="col-sm-7">
          <h3><i class="fa fa-info-circle"></i> Personal details</h3>
 
-         @if (!$profileData)
+         @if (!$profileData->count())
              <div class="alert alert-info">
                   No Details. Update/submit your profile
              </div>
             
-             @else
+           @else
              
-          <div style="background: rgb(235, 233, 233); padding:5px; display:flex; justify-content:space-between; font-size:15px">
-            <span><i class="fab fa-github"></i></span> <span> @foreach ( $profileData as $item){{ $item->github_account }} @endforeach</span>
-          </div>
-          <br>
+              <div style="background: rgb(235, 233, 233); padding:5px; display:flex; justify-content:space-between; font-size:15px">
+                <span><i class="fab fa-github"></i></span> <span> @foreach ( $profileData as $item){{ $item->github_account }} @endforeach</span>
+              </div>
+              <br>
 
-          <div style="background: rgb(235, 233, 233); padding:5px; display:flex; justify-content:space-between; font-size:15px">
-            <span><i class="fab fa-linkedin"></i></span> <span>@foreach ( $profileData as $item){{ $item->linkedin_account }} @endforeach</span>
-          </div>
-<br>
-          <div style="background: rgb(235, 233, 233); padding:5px; display:flex; justify-content:space-between; font-size:15px">
-            <span><i class="fas fa-phone-alt"></i></span> <span>@foreach ( $profileData as $item){{ $item->contact }} @endforeach</span>
-          </div>
+              <div style="background: rgb(235, 233, 233); padding:5px; display:flex; justify-content:space-between; font-size:15px">
+                <span><i class="fab fa-linkedin"></i></span> <span>@foreach ( $profileData as $item){{ $item->linkedin_account }} @endforeach</span>
+              </div>
+    <br>
+              <div style="background: rgb(235, 233, 233); padding:5px; display:flex; justify-content:space-between; font-size:15px">
+                <span><i class="fas fa-phone-alt"></i></span> <span>@foreach ( $profileData as $item){{ $item->contact }} @endforeach</span>
+              </div>
          @endif
 
          
