@@ -246,7 +246,11 @@ if (Auth::check()) {
        {{-- passing the users all to js to get the length of register users --}}
 <script type="text/javascript">
     window.data = {!! json_encode($users) !!}
-
+//     let link = document.querySelectorAll('.nav-link');
+//     link.onClick =(e)=>{
+//     e.preventDefault()
+//     console.log('click')
+// }
 </script>
 
 
