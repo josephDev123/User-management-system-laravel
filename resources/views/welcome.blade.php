@@ -25,8 +25,14 @@ if (Auth::check()) {
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#"><i style='color:gray' class="fa fa-envelope fa-lg"></i></a>
       </li>
-      <li class="nav-item">
-      <a class="nav-link" href="#"><i style='color:gray' class="fa fa-bell"></i></a>
+      <li class="nav-item" >
+        <a href='' class="btn btn-primary position-relative btn-sm" style='margin-right:20px'>
+          <i class="fa fa-bell"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            99+
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        </a>
       </li>   
       <div class="dropdown dropstart" style=margin-right:'10px'>
           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

@@ -30,17 +30,18 @@ class profileController extends Controller
         $profile = new Profiles;
 
          // Get Filename
-         $filename = pathinfo($request->file('img_file'), PATHINFO_FILENAME);
-         // Get just Extension
-         $extension = $request->file('img_file')->getClientOriginalExtension();
-         // Filename To store
-         $fileNameToStore = $filename. '_'. time().'.'.$extension;
-         // Upload Image
-         $path = $request->file('img_file')->storeAs('public/image', $fileNameToStore);
- 
+        //  $filename = pathinfo($request->file('img_file'), PATHINFO_FILENAME);
+        //  // Get just Extension
+        //  $extension = $request->file('img_file')->getClientOriginalExtension();
+        //  // Filename To store
+        //  $fileNameToStore = $filename. '_'. time().'.'.$extension;
+        //  // Upload Image
+        //  $path = $request->file('img_file')->storeAs('public/image', $fileNameToStore);
+        $file = $request->file('img_file');
+        $file->move(base_path('\public\profile_images'), $file->getClientOriginalName());
 
         $profile->user_id = Auth::id();
-        $profile->photo_url = $path;
+        $profile->photo_url = $request->file('img_file')->getClientOriginalName();
         $profile->title = $request->input('title');
         $profile->github_account = $request->input('git_account');
         $profile->linkedin_account = $request->input('linkedin_account');
