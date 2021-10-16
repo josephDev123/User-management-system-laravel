@@ -1,7 +1,9 @@
 'use strict';
+let url= location.href;
 let links = document.querySelectorAll('.nav-link');
+
 links.forEach(link =>{
-    link.onclick =(e)=>{ 
-        link.classList.add('active')
-    }
+    let anchor_link = link.href;
+    url === anchor_link?link.classList.add('active'):link.classList.remove('active')
+  
 })
