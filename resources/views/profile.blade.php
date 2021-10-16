@@ -144,7 +144,7 @@
        <div class="row">
 
          <div class="col-sm-4">
-            <h6 class='alert alert-danger'>If no Profile image. Upload</h6> 
+            <h6 class='alert alert-danger'>If no Profile image?. Upload</h6> 
           @foreach($profileData as $item) 
              @if($item)
                 <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="120" height="120">
