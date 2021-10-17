@@ -5,7 +5,7 @@
 ?>
 
 @extends('layout.main');
-@section('title', 'Profile page');
+@section('title', 'message page');
 @section('content');
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">Joe Dev</a>
@@ -121,8 +121,23 @@
           </div>
         </div>
 
-       <div class="row">
-            Welcome to message
+       <div class="row justify-content-center">
+           <div class="col-8">
+                <form method="post" action="/store_message">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="Title" aria-describedby="subject of content">
+                    </div>
+                    <div class="mb-3">
+                        <label for="content" class="form-label"> Content</label>
+                        <textarea class="form-control" id="content" rows="3"></textarea>
+                      </div>
+                
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+           </div>
+        
        </div>
       </main>
 

@@ -32,7 +32,7 @@ Route::get('users_details', [UserDetailController::class, 'create'])->middleware
 
 // admin message route
 Route::get('admin_message', [adminMessageController::class, 'create']);
-
+Route::post('/store_message',  [adminMessageController::class, 'storeMessage']);
 
 //fallback route
 Route::fallback(function(){

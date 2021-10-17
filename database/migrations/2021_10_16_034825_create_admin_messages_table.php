@@ -15,6 +15,9 @@ class CreateAdminMessagesTable extends Migration
     {
         Schema::create('admin_messages', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id');
+            $table->string('title');
+            $table->string('content');
             $table->timestamps();
         });
     }
