@@ -1,10 +1,12 @@
 <?php
+
+use App\Http\Controllers\adminMessageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\UserDetailController;
-
+use App\Models\adminMessage;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,8 @@ Route::patch('/profile',  [profileController::class, 'update']);
 //user details route
 Route::get('users_details', [UserDetailController::class, 'create'])->middleware(['auth']);
 
+// admin message route
+Route::get('admin_message', [adminMessageController::class, 'create']);
 
 
 //fallback route

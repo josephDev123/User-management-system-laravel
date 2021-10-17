@@ -5,7 +5,7 @@
 ?>
 
 @extends('layout.main');
-@section('title', 'users page');
+@section('title', 'Profile page');
 @section('content');
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">Joe Dev</a>
@@ -28,21 +28,20 @@
       </li>   
       <div class="dropdown dropstart" style=margin-right:'10px'>
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        @foreach ($profileData  as $item)
 
+        {{-- @foreach ($profileData  as $item)
         @if ( $item->photo_url)
           <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="30" height="30">
         @else
         <img src="/images.png" width="40" height="30" class="rounded-circle img-fluid"/>
         @endif
-
-    @endforeach 
+    @endforeach  --}}
      
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li><a class="dropdown-item" href="#">Action</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>2021_09_08_151714_create_profiles_table.php
       </ul>
       </div>
 
@@ -62,6 +61,8 @@
         </form>
         </div>
       </div>
+
+
   </header>
 
   {{-- navbar section --}}
@@ -89,13 +90,14 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="">
                 <span data-feather="users"></span>
                 Message
               </a>
             </li>
+          
           </ul>
-         
+          
         </div>
       </nav>
         {{-- end navbar section --}}
@@ -106,7 +108,7 @@
    {{-- start main section --}}
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">User Information</h1>
+          <h4 class="h5">Company's important Message</h4>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
               <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -119,44 +121,8 @@
           </div>
         </div>
 
-        {{-- // information table --}}
        <div class="row">
-        <div class="table-responsive">
-            <table class="table table-striped caption-top">
-              <caption>List of users</caption>
-              <caption> <p class="alert alert-danger">Note: Only users with completed profile will be display</p></caption>
-              <thead>
-                <tr>
-                  <th scope="col">id</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Photo</th>
-                  <th scope="col">Personal Detail</th>
-                  <th scope="col">Contact</th>
-                  <th scope="col">Github Account</th>
-                  <th scope="col">LinkedIn Account</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach ($userProfile_detail as $item)
-                  <tr> 
-                      <th scope="row">{{ $item->id }}</th>
-                      <td>{{ $item->title }}</td>
-                      <td>{{ $item->name }}</td>
-                      <td>{{ $item->email }}</td>
-                      <td><img src="{{asset('profile_images/'.$item->photo_url) }}" width="70" height="70" /></td>
-                      <td>{{ $item->personal_detail }}</td>
-                      <td>{{ $item->contact }}</td>
-                      <td>{{ $item->github_account }}</td>
-                      <td>{{ $item->linkedin_account }}</td>  
-                  </tr>
-                @endforeach
-
-              </tbody>
-            </table>
-        </div>
-
+            Welcome to message
        </div>
       </main>
 
