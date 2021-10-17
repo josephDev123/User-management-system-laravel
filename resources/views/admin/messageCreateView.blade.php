@@ -127,11 +127,11 @@
                     @csrf
                     <div class="mb-3">
                         <label for="subject" class="form-label">Subject</label>
-                        <input type="text" class="form-control" id="Title" aria-describedby="subject of content">
+                        <input type="text" class="form-control" id="Title" name="subject" aria-describedby="subject of content">
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label"> Content</label>
-                        <textarea class="form-control" id="content" rows="3"></textarea>
+                        <textarea class="form-control" id="content" rows="3" name="content"></textarea>
                       </div>
                 
                     <button type="submit" class="btn btn-primary">Send</button>

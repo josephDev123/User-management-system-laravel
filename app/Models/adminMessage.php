@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class adminMessage extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'user_id',
+        'subject',
+        'content'
+    ];
 }
