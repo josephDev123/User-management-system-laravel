@@ -90,7 +90,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
+              <a class="nav-link" href="{{ url('/admin_message') }}">
                 <span data-feather="users"></span>
                 Message
               </a>
@@ -122,6 +122,15 @@
         </div>
 
        <div class="row justify-content-center">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
            <div class="col-8">
                 <form method="post" action="/store_message">
                     @csrf

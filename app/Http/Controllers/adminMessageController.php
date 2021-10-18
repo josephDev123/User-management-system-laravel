@@ -14,17 +14,19 @@ class adminMessageController extends Controller
    }
 
    public function storeMessage(Request $request){
-
+// validate the form
         $request->validate([
-           'subject'=>'required|min:100|max:100',
+           'subject'=>'required|min:100',
            'content'=>'required',
         ]);
 
+      //   insert into table model
         adminMessage::create([
-            'user_id'=>$request->user,
+            'user_id'=>$request->Auth::user()->id,
             'subject'=>$request->subject,
             'content'=>$request->content, 
         ]);
-
+        
+        return back();
    }
 }
