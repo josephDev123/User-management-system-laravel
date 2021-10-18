@@ -1,19 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\notification;
 use App\Models\Profiles;
 use App\Models\User; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
+
 class profileController extends Controller
 {
     public function create(){
+        $notificationModel = new notification();
         $user = new User();
         $profile = new Profiles();
         $profileData = $profile->where('user_id', '=', Auth::id())->get();
-        return view('profile', ['profileData'=>$profileData]);
+        return view('profile', ['profileData'=>$profileData, 'notificationModel' => $notificationModel->all()]);
     }
 
 

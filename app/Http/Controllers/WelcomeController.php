@@ -1,14 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\notification;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Profiles;
 use Illuminate\Http\Request;
 
+
 class WelcomeController extends Controller
 {
     public function create(Request $request){
+        $notificationModel = new notification();
         //unique ip address
         $ip_address = [];
         if($request->ip() && $request->userAgent()){
@@ -22,6 +26,6 @@ class WelcomeController extends Controller
         $user = User::all();
         $auth_user = Auth::check();
     
-        return view('welcome', ['users' => $user, 'auth'=>$auth_user, 'profileData'=>$profileData, 'ip_address'=>$unique_ip]);
+        return view('welcome', ['users' => $user, 'auth'=>$auth_user, 'profileData'=>$profileData, 'ip_address'=>$unique_ip, 'notificationModel' => $notificationModel->all()]);
     }
 }
