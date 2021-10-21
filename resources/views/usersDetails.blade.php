@@ -91,7 +91,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url('/admin_message') }}">
                 <span data-feather="users"></span>
-                Message
+                Add message
               </a>
             </li>
 

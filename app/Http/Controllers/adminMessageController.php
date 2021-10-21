@@ -44,7 +44,7 @@ class adminMessageController extends Controller
       $notificationModel = new notification();
       // recent message posted
       $message =adminMessage::join('notifications', 'admin_messages.id', '=','notifications.id')->get(['admin_messages.*','notifications.id', 'notifications.user_id']);
-      return view('viewMessage', ['message'=>$message]);
+      return view('viewMessage', ['message'=>$message, 'notificationModel' => $notificationModel->all()]);
      
    }
 
