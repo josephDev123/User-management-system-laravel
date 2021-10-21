@@ -34,6 +34,7 @@ Route::get('users_details', [UserDetailController::class, 'create'])->middleware
 Route::get('admin_message', [adminMessageController::class, 'create']);
 Route::post('/store_message',  [adminMessageController::class, 'storeMessage']);
 Route::get('/notification_message',  [adminMessageController::class, 'getNotificationMessage']);
+
 //fallback route
 Route::fallback(function(){
     return 'the page you are aspiring to view does not exist';

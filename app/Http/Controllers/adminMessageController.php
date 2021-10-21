@@ -24,7 +24,7 @@ class adminMessageController extends Controller
            'content'=>'required',
         ]);
 
-      //   insert into table model
+      //   insert into admin_message table 
       $adminMessage= new adminMessage();
       $adminMessage::create([
             'user_id'=>Auth::user()->id,
@@ -32,6 +32,7 @@ class adminMessageController extends Controller
             'content'=>$request->content 
         ]);
         
+         //   insert into notification table 
         notification::create([
          'user_id'=>Auth::user()->id
         ]);
@@ -40,7 +41,11 @@ class adminMessageController extends Controller
    }
 
    public function getNotificationMessage(){
-      return 'i got the message';
+      $notificationModel = new notification();
+      // recent message posted
+      $message =adminMessage::join('notifications', 'admin_messages.id', '=','notifications.id')->get(['admin_messages.*','notifications.id', 'notifications.user_id']);
+      return view('viewMessage', ['message'=>$message]);
+     
    }
 
 
