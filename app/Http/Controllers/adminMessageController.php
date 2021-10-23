@@ -5,15 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\adminMessage;
 use App\Models\notification;
+use App\Models\Profiles;
 use Illuminate\Http\Request;
+
 
 
 class adminMessageController extends Controller
 {
 
   public function create(){
+   $profile = new Profiles();
+   $profileData = $profile->where('user_id', '=', Auth::id())->get();
      $notificationModel = new notification();
-     return view('admin.messageCreateView', ['notificationModel' => $notificationModel->all()]);
+     return view('admin.messageCreateView', ['notificationModel' => $notificationModel->all(), 'profileData'=>$profileData,]);
    }
 
 

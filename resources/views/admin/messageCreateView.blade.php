@@ -36,6 +36,12 @@
         <img src="/images.png" width="40" height="30" class="rounded-circle img-fluid"/>
         @endif
     @endforeach  --}}
+
+     @forelse ($profileData as $profile)
+      <img src="{{ asset('/profile_images/'.$profile->photo_url) }}" alt="" class="img-fluid" height="200px" width="200px" >  
+      @empty
+      <img src="/images.png" class="rounded-circle img-fluid"/> 
+    @endforelse
      
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
