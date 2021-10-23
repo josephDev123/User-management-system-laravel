@@ -37,14 +37,11 @@ if (Auth::check()) {
       <div class="dropdown dropstart" style=margin-right:'10px'>
           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 
-        @foreach ($profileData  as $item)
-
-            @if ( $item->photo_url)
-              <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="30" height="30">
-            @else
-              <img src="images/female_avatar.png" width="40" height="30" class="rounded-circle img-fluid"/>
-            @endif
-        @endforeach 
+        @forelse ($profileData as $profile)
+        <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="30" height="30">
+        @empty
+        <img src="images/female_avatar.png" width="40" height="30" class="rounded-circle img-fluid pe-1" /> 
+        @endforelse
     
 
           </button>

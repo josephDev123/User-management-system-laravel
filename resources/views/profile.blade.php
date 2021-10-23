@@ -28,15 +28,12 @@
       </li>   
       <div class="dropdown dropstart" style=margin-right:'10px'>
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        @foreach ($profileData  as $item)
 
-        @if ( $item->photo_url)
-          <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="30" height="30">
-        @else
-        <img src="/images.png" width="40" height="30" class="rounded-circle img-fluid"/>
-        @endif
-
-    @endforeach 
+    @forelse ($profileData as $profile)
+      <img src="{{ asset('/profile_images/'.$profile->photo_url) }}" alt="" class="img-responsive" width="30" height="30">  
+    @empty
+    <img src="/images.png" width="40" height="30" class="rounded-circle img-fluid pe-1"/> 
+    @endforelse
      
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -132,11 +129,18 @@
 
          <div class="col-sm-4">
             <h6 class='alert alert-danger'>If no Profile image?. Upload</h6> 
-          @foreach($profileData as $item) 
+          {{-- @foreach($profileData as $item) 
              @if($item)
                 <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="120" height="120">
              @endif  
-            @endforeach
+            @endforeach --}}
+
+            
+    @forelse ($profileData as $profile)
+      <img src="{{ asset('/profile_images/'.$profile->photo_url) }}" alt="" class="img-fluid" height="200px" width="200px" >  
+      @empty
+      <img src="/images.png" class="rounded-circle img-fluid"/> 
+    @endforelse
 <br><br>
 
       @if ($profileData)

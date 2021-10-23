@@ -22,6 +22,7 @@
           <i class="fa fa-bell"></i>
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
             {{ $notificationModel->count() }}
+        
             <span class="visually-hidden">unread messages</span>
           </span>
         </a>
@@ -115,7 +116,7 @@
    {{-- start main section --}}
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h4 class="h5">Company's important Message</h4>
+          <h4 class="h4">Company's notification</h4>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
               <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -127,13 +128,22 @@
             </button>
           </div>
         </div>
-
+        @forelse ($message as $msg)
+        <div class="card d-flex flex-column justify-content-center align-items-center">
+            
+          <div class="card-body" >
+                <h5 class="card-title">{{ $msg->subject }}</h5>
+                <p class="card-text">{{ $msg->content }}</p>
+              </div>
+          </div>
+        @empty
+            <h5>No message(s)</h5>
+        @endforelse
       
       </main>
 
        {{-- end main section --}}
-
-
+     
 
     </div>
   </div>
