@@ -30,13 +30,11 @@
       <div class="dropdown dropstart" style=margin-right:'10px'>
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 
-        {{-- @foreach ($profileData  as $item)
-        @if ( $item->photo_url)
-          <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="30" height="30">
-        @else
-        <img src="/images.png" width="40" height="30" class="rounded-circle img-fluid"/>
-        @endif
-    @endforeach  --}}
+        @forelse ($profileData as $profile)
+          <img src="{{ asset('/profile_images/'.$profile->photo_url) }}" alt="" class="img-responsive" width="30" height="30" >  
+          @empty
+          <img src="/images.png" class="rounded-circle img-fluid"/> 
+        @endforelse
      
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -128,17 +126,20 @@
             </button>
           </div>
         </div>
-        @forelse ($message as $msg)
-        <div class="card d-flex flex-column justify-content-center align-items-center">
-            
-          <div class="card-body" >
-                <h5 class="card-title">{{ $msg->subject }}</h5>
-                <p class="card-text">{{ $msg->content }}</p>
-              </div>
-          </div>
-        @empty
-            <h5>No message(s)</h5>
-        @endforelse
+        <div class="row">
+              @forelse ($message as $msg)
+              <div class="card d-flex flex-column justify-content-center align-items-center">
+                  
+                <div class="card-body" >
+                      <h5 class="card-title">{{ $msg->subject }}</h5>
+                      <p class="card-text">{{ $msg->content }}</p>
+                    </div>
+                </div>
+              @empty
+                  <h5>No message(s)</h5>
+              @endforelse
+        </div>
+      
       
       </main>
 

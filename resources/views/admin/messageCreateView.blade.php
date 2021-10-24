@@ -1,8 +1,4 @@
-<?php 
-// use App\Models\Profiles; 
-// use App\Models\User; 
-// $profile = new Profiles;
-?>
+
 
 @extends('layout.main');
 @section('title', 'message page');
@@ -29,16 +25,8 @@
       <div class="dropdown dropstart" style=margin-right:'10px'>
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 
-        {{-- @foreach ($profileData  as $item)
-        @if ( $item->photo_url)
-          <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="30" height="30">
-        @else
-        <img src="/images.png" width="40" height="30" class="rounded-circle img-fluid"/>
-        @endif
-    @endforeach  --}}
-
      @forelse ($profileData as $profile)
-      <img src="{{ asset('/profile_images/'.$profile->photo_url) }}" alt="" class="img-fluid" height="200px" width="200px" >  
+      <img src="{{ asset('/profile_images/'.$profile->photo_url) }}" alt="" class="img-responsive" width="30" height="30" >  
       @empty
       <img src="/images.png" class="rounded-circle img-fluid"/> 
     @endforelse
@@ -57,7 +45,6 @@
   
           <form method="POST" action="{{ route('logout') }}" >
             @csrf
-  
            <button class="btn btn-danger btn-sm" style="margin-left:7px; margin-top:5px;" <x-responsive-nav-link :href="route('logout')"
                     onclick="event.preventDefault();
                                 this.closest('form').submit();" style="color:white;">

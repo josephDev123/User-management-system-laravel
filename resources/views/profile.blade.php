@@ -26,7 +26,7 @@
           </span>
         </a>
       </li>   
-      <div class="dropdown dropstart" style=margin-right:'10px'>
+      <div class="dropdown dropstart" style='margin-right:10px'>
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 
     @forelse ($profileData as $profile)
@@ -129,28 +129,22 @@
 
          <div class="col-sm-4">
             <h6 class='alert alert-danger'>If no Profile image?. Upload</h6> 
-          {{-- @foreach($profileData as $item) 
-             @if($item)
-                <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="120" height="120">
-             @endif  
-            @endforeach --}}
-
             
-    @forelse ($profileData as $profile)
-      <img src="{{ asset('/profile_images/'.$profile->photo_url) }}" alt="" class="img-fluid" height="200px" width="200px" >  
-      @empty
-      <img src="/images.png" class="rounded-circle img-fluid"/> 
-    @endforelse
+            @forelse ($profileData as $profile)
+              <img src="{{ asset('/profile_images/'.$profile->photo_url) }}" alt="" class="img-fluid" height="200px" width="200px" >  
+              @empty
+              <img src="/images.png" class="rounded-circle img-fluid"/> 
+            @endforelse
 <br><br>
 
-      @if ($profileData)
-        @foreach ( $profileData as $item)
-        <h4>{{ $item->title }}</h4>
-        <br>
-        {{ $item->personal_detail }}
-        <br> <br>
-        @endforeach
-      @endif
+          @if ($profileData)
+            @foreach ( $profileData as $item)
+            <h4>{{ $item->title }}</h4>
+            <br>
+            {{ $item->personal_detail }}
+            <br> <br>
+            @endforeach
+          @endif
     
       <h6 style="background: rgb(223, 220, 220); font-weight:normal; padding: 4px"><i class="fa fa-user"></i> {{ Auth::user()->name }} </h6>
       <h6 style="background: rgb(223, 220, 220); font-weight:normal; padding: 4px"><i class="fa fa-calendar-alt"></i> {{ Auth::user()->created_at }} </h6>

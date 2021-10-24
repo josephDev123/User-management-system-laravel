@@ -34,11 +34,11 @@ if (Auth::check()) {
           </span>
         </a>
       </li>   
-      <div class="dropdown dropstart" style=margin-right:'10px'>
+      <div class="dropdown dropstart" style='margin-right:10px'>
           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 
         @forelse ($profileData as $profile)
-        <img src="{{ asset('/profile_images/'.$item->photo_url) }}" alt="" class="img-responsive" width="30" height="30">
+        <img src="{{ asset('/profile_images/'.$profile->photo_url) }}" alt="" class="img-responsive" width="30" height="30">
         @empty
         <img src="images/female_avatar.png" width="40" height="30" class="rounded-circle img-fluid pe-1" /> 
         @endforelse

@@ -17,7 +17,7 @@ class adminMessageController extends Controller
    $profile = new Profiles();
    $profileData = $profile->where('user_id', '=', Auth::id())->get();
      $notificationModel = new notification();
-     return view('admin.messageCreateView', ['notificationModel' => $notificationModel->all(), 'profileData'=>$profileData,]);
+     return view('admin.messageCreateView', ['notificationModel' => $notificationModel->all(), 'profileData'=>$profileData]);
    }
 
 
@@ -45,10 +45,12 @@ class adminMessageController extends Controller
    }
 
    public function getNotificationMessage(){
+      $profile = new Profiles();
+      $profileData = $profile->where('user_id', '=', Auth::id())->get();
       $notificationModel = new notification();
       // recent message posted
       $message =adminMessage::join('notifications', 'admin_messages.id', '=','notifications.id')->get(['admin_messages.*','notifications.id', 'notifications.user_id']);
-      return view('viewMessage', ['message'=>$message, 'notificationModel' => $notificationModel->all()]);
+      return view('viewMessage', ['message'=>$message, 'notificationModel' => $notificationModel->all(), 'profileData'=>$profileData]);
      
    }
 
