@@ -8,6 +8,10 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\UserDetailController;
 use App\Models\adminMessage;
 
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,8 +35,8 @@ Route::patch('/profile',  [profileController::class, 'update']);
 Route::get('users_details', [UserDetailController::class, 'create'])->middleware(['auth']);
 
 // admin message route
-Route::get('admin_message', [adminMessageController::class, 'create']);
-Route::post('/store_message',  [adminMessageController::class, 'storeMessage']);
+Route::get('admin_message', [adminMessageController::class, 'create'])->middleware(['admin']);
+Route::post('/store_message',  [adminMessageController::class, 'storeMessage'])->middleware(['admin']);
 Route::get('/notification_message',  [adminMessageController::class, 'getNotificationMessage']);
 
 //fallback route
