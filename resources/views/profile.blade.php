@@ -131,9 +131,9 @@
             <h6 class='alert alert-danger'>If no Profile image?. Upload</h6> 
             
             @forelse ($profileData as $profile)
-              <img src="{{ asset('/profile_images/'.$profile->photo_url) }}" alt="" class="img-fluid" height="200px" width="200px" >  
+              <img src="{{ asset('/profile_images/'.$profile->photo_url) }}" alt="" class="img-fluid" height="100px" width="100px" >  
               @empty
-              <img src="/images.png" class="rounded-circle img-fluid"/> 
+              <img src="/images.png" class="rounded-circle img-fluid" height="50px" width="50px"/> 
             @endforelse
 <br><br>
 

@@ -60,27 +60,59 @@ class profileController extends Controller
     public function update(Request $request){
         $profile = new Profiles;
         $validated = $request->validate([
-            'title'=>[ 'required','max:100'],
-            'git_account'=>['required'],
-            'linkedin_account'=>['required'],
-            'phone_contact'=>['required', 'max:20'],
-            'img_file' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'profile_detail'=>['required', 'max:200']
+            'title'=>[ 'max:100'],
+            // 'git_account'=>[],
+            // 'linkedin_account'=>['required'],
+            'phone_contact'=>[ 'max:20'],
+            // 'img_file' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'profile_detail'=>['max:200']
         ]);
-        
         $file = $request->file('img_file');
-        $file->move(base_path('\public\profile_images'), $file->getClientOriginalName());
+       ($file)?$file->move(base_path('\public\profile_images'), $file->getClientOriginalName()):'';
+        
+
+        $profileModel = $profile::where('user_id', '=', Auth::id() )->get();
+        foreach($profileModel as $profile){
+            $request->title? $profile->title = $request->title:$profile->title=$profile->title;
+
+            $request->file('img_file')? $profile->photo_url = $request->img_file->getClientOriginalName():$profile->photo_url=$profile->photo_url;
+
+            $request->git_account?$profile->github_account=$request->git_account:$profile->github_account=$profile->github_account;
+
+            $request->linkedin_account?$profile->linkedin_account=$request->linkedin_account:$profile->linkedin_account=$profile->linkedin_account;
+
+            $request->phone_contact?$profile->contact=$request->phone_contact:$profile->contact=$profile->contact;
+
+            $request->profile_detail?$profile->personal_detail=$request->profile_detail:$profile->personal_detail=$profile->personal_detail;
+              
+                // $profile->github_account = $request->git_account;
+                // $profile->linkedin_account = $request->linkedin_account;
+                // $profile->contact = $request->phone_contact;
+                // $profile->personal_detail = $request->profile_detail;
+                $profile->save();
+        }
+
+        // $profile::where('user_id', '=', Auth::id() )->update([
+        //     'photo_url' =>$request->img_file->getClientOriginalName(),
+        //     'title'=>$request->title,
+        //     'github_account'=>$request->git_account,
+        //     'linkedin_account'=>$request->linkedin_account,
+        //     'contact'=>$request->phone_contact,
+        //     'personal_detail'=>$request->profile_detail,
+        // ]);
 
 
-        $profile::where('user_id', '=', Auth::id() )->update([
-            'photo_url' =>$request->img_file->getClientOriginalName(),
-            'title'=>$request->title,
-            'github_account'=>$request->git_account,
-            'linkedin_account'=>$request->linkedin_account,
-            'contact'=>$request->phone_contact,
-            'personal_detail'=>$request->profile_detail,
-        ]);
+            // if($file){
+            //   $profileModel->photo_url = $request->img_file->getClientOriginalName();
+            // }
+            //     $profileModel->title = $request->title;
+            //     $profileModel->github_account = $request->git_account;
+            //     $profileModel->linkedin_account = $request->linkedin_account;
+            //     $profileModel->contact = $request->phone_contact;
+            //     $profileModel->personal_detail = $request->profile_detail;
 
+            //    $profileModel->save();
+        
         return redirect()->back();
     }
 }
