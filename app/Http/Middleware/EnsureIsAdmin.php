@@ -18,9 +18,9 @@ class EnsureIsAdmin
     public function handle(Request $request, Closure $next)
     {
 
-        if(Auth::user()->role !=='role'){
-            return redirect('/');
-        }
+        // if(Auth::user()->role !=='role'){
+        //     return redirect('/');
+        // }
         return $next($request);
     }
 }

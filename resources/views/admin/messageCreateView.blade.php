@@ -26,9 +26,9 @@
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 
      @forelse ($profileData as $profile)
-      <img src="{{ asset('/profile_images/'.$profile->photo_url) }}" alt="" class="img-responsive" width="30" height="30" >  
+      <img src="{{ asset('/profile_images/'.$profile->photo_url) }}" alt="" class="img-fluid" width="30" height="30" >  
       @empty
-      <img src="/images.png" class="rounded-circle img-fluid"/> 
+      <img src="/images.png" class="rounded-circle img-fluid" width="30" height="30"/> 
     @endforelse
      
       </button>

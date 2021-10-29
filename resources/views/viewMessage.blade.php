@@ -33,7 +33,7 @@
         @forelse ($profileData as $profile)
           <img src="{{ asset('/profile_images/'.$profile->photo_url) }}" alt="" class="img-responsive" width="30" height="30" >  
           @empty
-          <img src="/images.png" class="rounded-circle img-fluid"/> 
+          <img src="/images.png" class="rounded-circle img-fluid" width="30" height="30"/> 
         @endforelse
      
       </button>
